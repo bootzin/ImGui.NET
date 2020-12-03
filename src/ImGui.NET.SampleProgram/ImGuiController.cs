@@ -79,10 +79,10 @@ namespace ImGuiNET
 
 			IntPtr context = ImGui.CreateContext();
 			IntPtr implotContext = ImPlot.CreateContext();
-			//ImPlot.SetCurrentContext(implotContext);
+			ImPlot.SetCurrentContext(implotContext);
 			ImPlot.SetImGuiContext(context);
-			//ImGui.SetCurrentContext(context);
-			//ImNodes.Initialize();
+			ImGui.SetCurrentContext(context);
+			ImNodes.Initialize();
 			ImGuiIOPtr io = ImGui.GetIO();
 
 
@@ -137,6 +137,7 @@ namespace ImGuiNET
 			UpdateMonitors();
 
 			ImGui.NewFrame();
+			ImGuizmo.BeginFrame();
 			_frameBegun = true;
 		}
 
@@ -498,6 +499,7 @@ namespace ImGuiNET
 
 			_frameBegun = true;
 			ImGui.NewFrame();
+			ImGuizmo.BeginFrame();
 
 			ImGui.Text($"Main viewport Position: {ImGui.GetPlatformIO().MainViewport.Pos}");
 			ImGui.Text($"Main viewport Size: {ImGui.GetPlatformIO().MainViewport.Size}");
