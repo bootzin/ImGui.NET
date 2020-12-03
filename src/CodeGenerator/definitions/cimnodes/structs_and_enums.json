@@ -227,15 +227,15 @@
     ]
   },
   "locations": {
-    "AttributeFlags": "imnodes:67",
-    "ColorStyle": "imnodes:9",
-    "EmulateThreeButtonMouse": "imnodes:84",
-    "IO": "imnodes:82",
-    "LinkDetachWithModifierClick": "imnodes:94",
-    "PinShape": "imnodes:56",
-    "Style": "imnodes:111",
-    "StyleFlags": "imnodes:48",
-    "StyleVar": "imnodes:30"
+    "AttributeFlags": "imnodes:80",
+    "ColorStyle": "imnodes:22",
+    "EmulateThreeButtonMouse": "imnodes:97",
+    "IO": "imnodes:95",
+    "LinkDetachWithModifierClick": "imnodes:107",
+    "PinShape": "imnodes:69",
+    "Style": "imnodes:124",
+    "StyleFlags": "imnodes:61",
+    "StyleVar": "imnodes:43"
   },
   "structs": {
     "EmulateThreeButtonMouse": [

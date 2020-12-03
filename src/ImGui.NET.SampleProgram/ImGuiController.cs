@@ -83,8 +83,9 @@ namespace ImGuiNET
 			ImPlot.SetImGuiContext(context);
 			ImGui.SetCurrentContext(context);
 			ImNodes.Initialize();
+			ImGuizmo.SetImGuiContext(context);
+			ImNodes.SetImGuiContext(context);
 			ImGuiIOPtr io = ImGui.GetIO();
-
 
 			io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
 			io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;

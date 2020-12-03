@@ -527,6 +527,10 @@ namespace ImGuiNET
                 return Util.StringFromPtr(ret);
             }
         }
+        public static void SetImGuiContext(IntPtr ctx)
+        {
+            ImNodesNative.imnodes_SetImGuiContext(ctx);
+        }
         public static void SetNodeDraggable(int node_id, bool draggable)
         {
             byte native_draggable = draggable ? (byte)1 : (byte)0;

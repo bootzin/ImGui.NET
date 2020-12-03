@@ -29,7 +29,11 @@ namespace ImGuiNET
         [DllImport("cimguizmo", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_SetDrawlist(ImDrawList* drawlist);
         [DllImport("cimguizmo", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ImGuizmo_SetGizmoSizeClipSpace(float value);
+        [DllImport("cimguizmo", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_SetID(int id);
+        [DllImport("cimguizmo", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ImGuizmo_SetImGuiContext(IntPtr ctx);
         [DllImport("cimguizmo", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_SetOrthographic(byte isOrthographic);
         [DllImport("cimguizmo", CallingConvention = CallingConvention.Cdecl)]

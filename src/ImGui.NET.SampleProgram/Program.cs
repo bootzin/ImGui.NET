@@ -99,8 +99,8 @@ namespace ImGuiNET
 
 				ImGui.Begin("node editor");
 
-				//ImNodes.BeginNodeEditor();
-				//ImNodes.EndNodeEditor();
+				ImNodes.BeginNodeEditor();
+				ImNodes.EndNodeEditor();
 
 				ImGui.End();
 

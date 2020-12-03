@@ -209,9 +209,17 @@ namespace ImGuiNET
             ImDrawList* native_drawlist = drawlist.NativePtr;
             ImGuizmoNative.ImGuizmo_SetDrawlist(native_drawlist);
         }
+        public static void SetGizmoSizeClipSpace(float value)
+        {
+            ImGuizmoNative.ImGuizmo_SetGizmoSizeClipSpace(value);
+        }
         public static void SetID(int id)
         {
             ImGuizmoNative.ImGuizmo_SetID(id);
+        }
+        public static void SetImGuiContext(IntPtr ctx)
+        {
+            ImGuizmoNative.ImGuizmo_SetImGuiContext(ctx);
         }
         public static void SetOrthographic(bool isOrthographic)
         {
