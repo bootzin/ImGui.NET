@@ -11,6 +11,8 @@ namespace ImGuiNET
         public ImGuiViewportFlags Flags;
         public Vector2 Pos;
         public Vector2 Size;
+        public Vector2 WorkOffsetMin;
+        public Vector2 WorkOffsetMax;
         public float DpiScale;
         public ImDrawData* DrawData;
         public uint ParentViewportId;
@@ -18,9 +20,9 @@ namespace ImGuiNET
         public void* PlatformUserData;
         public void* PlatformHandle;
         public void* PlatformHandleRaw;
-        public byte PlatformRequestClose;
         public byte PlatformRequestMove;
         public byte PlatformRequestResize;
+        public byte PlatformRequestClose;
     }
     public unsafe partial struct ImGuiViewportPtr
     {
@@ -34,6 +36,8 @@ namespace ImGuiNET
         public ref ImGuiViewportFlags Flags => ref Unsafe.AsRef<ImGuiViewportFlags>(&NativePtr->Flags);
         public ref Vector2 Pos => ref Unsafe.AsRef<Vector2>(&NativePtr->Pos);
         public ref Vector2 Size => ref Unsafe.AsRef<Vector2>(&NativePtr->Size);
+        public ref Vector2 WorkOffsetMin => ref Unsafe.AsRef<Vector2>(&NativePtr->WorkOffsetMin);
+        public ref Vector2 WorkOffsetMax => ref Unsafe.AsRef<Vector2>(&NativePtr->WorkOffsetMax);
         public ref float DpiScale => ref Unsafe.AsRef<float>(&NativePtr->DpiScale);
         public ImDrawDataPtr DrawData => new ImDrawDataPtr(NativePtr->DrawData);
         public ref uint ParentViewportId => ref Unsafe.AsRef<uint>(&NativePtr->ParentViewportId);
@@ -41,12 +45,30 @@ namespace ImGuiNET
         public IntPtr PlatformUserData { get => (IntPtr)NativePtr->PlatformUserData; set => NativePtr->PlatformUserData = (void*)value; }
         public IntPtr PlatformHandle { get => (IntPtr)NativePtr->PlatformHandle; set => NativePtr->PlatformHandle = (void*)value; }
         public IntPtr PlatformHandleRaw { get => (IntPtr)NativePtr->PlatformHandleRaw; set => NativePtr->PlatformHandleRaw = (void*)value; }
-        public ref bool PlatformRequestClose => ref Unsafe.AsRef<bool>(&NativePtr->PlatformRequestClose);
         public ref bool PlatformRequestMove => ref Unsafe.AsRef<bool>(&NativePtr->PlatformRequestMove);
         public ref bool PlatformRequestResize => ref Unsafe.AsRef<bool>(&NativePtr->PlatformRequestResize);
+        public ref bool PlatformRequestClose => ref Unsafe.AsRef<bool>(&NativePtr->PlatformRequestClose);
         public void Destroy()
         {
-            ImGuiNative.ImGuiViewport_destroy(NativePtr);
+            ImGuiNative.ImGuiViewport_destroy((ImGuiViewport*)(NativePtr));
+        }
+        public Vector2 GetCenter()
+        {
+            Vector2 __retval;
+            ImGuiNative.ImGuiViewport_GetCenter(&__retval, (ImGuiViewport*)(NativePtr));
+            return __retval;
+        }
+        public Vector2 GetWorkPos()
+        {
+            Vector2 __retval;
+            ImGuiNative.ImGuiViewport_GetWorkPos(&__retval, (ImGuiViewport*)(NativePtr));
+            return __retval;
+        }
+        public Vector2 GetWorkSize()
+        {
+            Vector2 __retval;
+            ImGuiNative.ImGuiViewport_GetWorkSize(&__retval, (ImGuiViewport*)(NativePtr));
+            return __retval;
         }
     }
 }

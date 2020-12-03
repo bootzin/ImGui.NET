@@ -72,7 +72,7 @@ namespace ImGuiNET
         public ImVector<ImGuiViewportPtr> Viewports => new ImVector<ImGuiViewportPtr>(NativePtr->Viewports);
         public void Destroy()
         {
-            ImGuiNative.ImGuiPlatformIO_destroy(NativePtr);
+            ImGuiNative.ImGuiPlatformIO_destroy((ImGuiPlatformIO*)(NativePtr));
         }
     }
 }

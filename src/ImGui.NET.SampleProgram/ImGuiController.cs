@@ -78,7 +78,11 @@ namespace ImGuiNET
 			_windowHeight = height;
 
 			IntPtr context = ImGui.CreateContext();
-			ImGui.SetCurrentContext(context);
+			IntPtr implotContext = ImPlot.CreateContext();
+			//ImPlot.SetCurrentContext(implotContext);
+			ImPlot.SetImGuiContext(context);
+			//ImGui.SetCurrentContext(context);
+			//ImNodes.Initialize();
 			ImGuiIOPtr io = ImGui.GetIO();
 
 
@@ -631,30 +635,30 @@ namespace ImGuiNET
 			}
 		}
 
-		private static void SetKeyMappings()
-		{
-			ImGuiIOPtr io = ImGui.GetIO();
-			io.KeyMap[(int)ImGuiKey.Tab] = (int)Key.Tab;
-			io.KeyMap[(int)ImGuiKey.LeftArrow] = (int)Key.Left;
-			io.KeyMap[(int)ImGuiKey.RightArrow] = (int)Key.Right;
-			io.KeyMap[(int)ImGuiKey.UpArrow] = (int)Key.Up;
-			io.KeyMap[(int)ImGuiKey.DownArrow] = (int)Key.Down;
-			io.KeyMap[(int)ImGuiKey.PageUp] = (int)Key.PageUp;
-			io.KeyMap[(int)ImGuiKey.PageDown] = (int)Key.PageDown;
-			io.KeyMap[(int)ImGuiKey.Home] = (int)Key.Home;
-			io.KeyMap[(int)ImGuiKey.End] = (int)Key.End;
-			io.KeyMap[(int)ImGuiKey.Delete] = (int)Key.Delete;
-			io.KeyMap[(int)ImGuiKey.Backspace] = (int)Key.BackSpace;
-			io.KeyMap[(int)ImGuiKey.Enter] = (int)Key.Enter;
-			io.KeyMap[(int)ImGuiKey.Escape] = (int)Key.Escape;
-			io.KeyMap[(int)ImGuiKey.A] = (int)Key.A;
-			io.KeyMap[(int)ImGuiKey.C] = (int)Key.C;
-			io.KeyMap[(int)ImGuiKey.V] = (int)Key.V;
-			io.KeyMap[(int)ImGuiKey.X] = (int)Key.X;
-			io.KeyMap[(int)ImGuiKey.Y] = (int)Key.Y;
-			io.KeyMap[(int)ImGuiKey.Z] = (int)Key.Z;
-			io.KeyMap[(int)ImGuiKey.Space] = (int)Key.Space;
-		}
+        private static void SetKeyMappings()
+        {
+            ImGuiIOPtr io = ImGui.GetIO();
+            io.KeyMap[(int)ImGuiKey.Tab] = (int)Key.Tab;
+            io.KeyMap[(int)ImGuiKey.LeftArrow] = (int)Key.Left;
+            io.KeyMap[(int)ImGuiKey.RightArrow] = (int)Key.Right;
+            io.KeyMap[(int)ImGuiKey.UpArrow] = (int)Key.Up;
+            io.KeyMap[(int)ImGuiKey.DownArrow] = (int)Key.Down;
+            io.KeyMap[(int)ImGuiKey.PageUp] = (int)Key.PageUp;
+            io.KeyMap[(int)ImGuiKey.PageDown] = (int)Key.PageDown;
+            io.KeyMap[(int)ImGuiKey.Home] = (int)Key.Home;
+            io.KeyMap[(int)ImGuiKey.End] = (int)Key.End;
+            io.KeyMap[(int)ImGuiKey.Delete] = (int)Key.Delete;
+            io.KeyMap[(int)ImGuiKey.Backspace] = (int)Key.BackSpace;
+            io.KeyMap[(int)ImGuiKey.Enter] = (int)Key.Enter;
+            io.KeyMap[(int)ImGuiKey.Escape] = (int)Key.Escape;
+            io.KeyMap[(int)ImGuiKey.Space] = (int)Key.Space;
+            io.KeyMap[(int)ImGuiKey.A] = (int)Key.A;
+            io.KeyMap[(int)ImGuiKey.C] = (int)Key.C;
+            io.KeyMap[(int)ImGuiKey.V] = (int)Key.V;
+            io.KeyMap[(int)ImGuiKey.X] = (int)Key.X;
+            io.KeyMap[(int)ImGuiKey.Y] = (int)Key.Y;
+            io.KeyMap[(int)ImGuiKey.Z] = (int)Key.Z;
+        }
 
 		private void RenderImDrawData(ImDrawDataPtr draw_data, GraphicsDevice gd, CommandList cl)
 		{

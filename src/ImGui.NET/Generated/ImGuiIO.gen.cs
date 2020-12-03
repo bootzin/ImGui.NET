@@ -59,7 +59,7 @@ namespace ImGuiNET
         public byte KeyAlt;
         public byte KeySuper;
         public fixed byte KeysDown[512];
-        public fixed float NavInputs[22];
+        public fixed float NavInputs[21];
         public byte WantCaptureMouse;
         public byte WantCaptureKeyboard;
         public byte WantTextInput;
@@ -74,6 +74,7 @@ namespace ImGuiNET
         public int MetricsActiveWindows;
         public int MetricsActiveAllocations;
         public Vector2 MouseDelta;
+        public ImGuiKeyModFlags KeyMods;
         public Vector2 MousePosPrev;
         public Vector2 MouseClickedPos_0;
         public Vector2 MouseClickedPos_1;
@@ -96,8 +97,10 @@ namespace ImGuiNET
         public fixed float MouseDragMaxDistanceSqr[5];
         public fixed float KeysDownDuration[512];
         public fixed float KeysDownDurationPrev[512];
-        public fixed float NavInputsDownDuration[22];
-        public fixed float NavInputsDownDurationPrev[22];
+        public fixed float NavInputsDownDuration[21];
+        public fixed float NavInputsDownDurationPrev[21];
+        public float PenPressure;
+        public ushort InputQueueSurrogate;
         public ImVector InputQueueCharacters;
     }
     public unsafe partial struct ImGuiIOPtr
@@ -160,7 +163,7 @@ namespace ImGuiNET
         public ref bool KeyAlt => ref Unsafe.AsRef<bool>(&NativePtr->KeyAlt);
         public ref bool KeySuper => ref Unsafe.AsRef<bool>(&NativePtr->KeySuper);
         public RangeAccessor<bool> KeysDown => new RangeAccessor<bool>(NativePtr->KeysDown, 512);
-        public RangeAccessor<float> NavInputs => new RangeAccessor<float>(NativePtr->NavInputs, 22);
+        public RangeAccessor<float> NavInputs => new RangeAccessor<float>(NativePtr->NavInputs, 21);
         public ref bool WantCaptureMouse => ref Unsafe.AsRef<bool>(&NativePtr->WantCaptureMouse);
         public ref bool WantCaptureKeyboard => ref Unsafe.AsRef<bool>(&NativePtr->WantCaptureKeyboard);
         public ref bool WantTextInput => ref Unsafe.AsRef<bool>(&NativePtr->WantTextInput);
@@ -175,6 +178,7 @@ namespace ImGuiNET
         public ref int MetricsActiveWindows => ref Unsafe.AsRef<int>(&NativePtr->MetricsActiveWindows);
         public ref int MetricsActiveAllocations => ref Unsafe.AsRef<int>(&NativePtr->MetricsActiveAllocations);
         public ref Vector2 MouseDelta => ref Unsafe.AsRef<Vector2>(&NativePtr->MouseDelta);
+        public ref ImGuiKeyModFlags KeyMods => ref Unsafe.AsRef<ImGuiKeyModFlags>(&NativePtr->KeyMods);
         public ref Vector2 MousePosPrev => ref Unsafe.AsRef<Vector2>(&NativePtr->MousePosPrev);
         public RangeAccessor<Vector2> MouseClickedPos => new RangeAccessor<Vector2>(&NativePtr->MouseClickedPos_0, 5);
         public RangeAccessor<double> MouseClickedTime => new RangeAccessor<double>(NativePtr->MouseClickedTime, 5);
@@ -189,12 +193,14 @@ namespace ImGuiNET
         public RangeAccessor<float> MouseDragMaxDistanceSqr => new RangeAccessor<float>(NativePtr->MouseDragMaxDistanceSqr, 5);
         public RangeAccessor<float> KeysDownDuration => new RangeAccessor<float>(NativePtr->KeysDownDuration, 512);
         public RangeAccessor<float> KeysDownDurationPrev => new RangeAccessor<float>(NativePtr->KeysDownDurationPrev, 512);
-        public RangeAccessor<float> NavInputsDownDuration => new RangeAccessor<float>(NativePtr->NavInputsDownDuration, 22);
-        public RangeAccessor<float> NavInputsDownDurationPrev => new RangeAccessor<float>(NativePtr->NavInputsDownDurationPrev, 22);
+        public RangeAccessor<float> NavInputsDownDuration => new RangeAccessor<float>(NativePtr->NavInputsDownDuration, 21);
+        public RangeAccessor<float> NavInputsDownDurationPrev => new RangeAccessor<float>(NativePtr->NavInputsDownDurationPrev, 21);
+        public ref float PenPressure => ref Unsafe.AsRef<float>(&NativePtr->PenPressure);
+        public ref ushort InputQueueSurrogate => ref Unsafe.AsRef<ushort>(&NativePtr->InputQueueSurrogate);
         public ImVector<ushort> InputQueueCharacters => new ImVector<ushort>(NativePtr->InputQueueCharacters);
         public void AddInputCharacter(uint c)
         {
-            ImGuiNative.ImGuiIO_AddInputCharacter(NativePtr, c);
+            ImGuiNative.ImGuiIO_AddInputCharacter((ImGuiIO*)(NativePtr), c);
         }
         public void AddInputCharactersUTF8(string str)
         {
@@ -216,19 +222,23 @@ namespace ImGuiNET
                 native_str[native_str_offset] = 0;
             }
             else { native_str = null; }
-            ImGuiNative.ImGuiIO_AddInputCharactersUTF8(NativePtr, native_str);
+            ImGuiNative.ImGuiIO_AddInputCharactersUTF8((ImGuiIO*)(NativePtr), native_str);
             if (str_byteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(native_str);
             }
         }
+        public void AddInputCharacterUTF16(ushort c)
+        {
+            ImGuiNative.ImGuiIO_AddInputCharacterUTF16((ImGuiIO*)(NativePtr), c);
+        }
         public void ClearInputCharacters()
         {
-            ImGuiNative.ImGuiIO_ClearInputCharacters(NativePtr);
+            ImGuiNative.ImGuiIO_ClearInputCharacters((ImGuiIO*)(NativePtr));
         }
         public void Destroy()
         {
-            ImGuiNative.ImGuiIO_destroy(NativePtr);
+            ImGuiNative.ImGuiIO_destroy((ImGuiIO*)(NativePtr));
         }
     }
 }

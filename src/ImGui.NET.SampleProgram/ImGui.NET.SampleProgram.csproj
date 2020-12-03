@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,8 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ImGui.NET\ImGui.NET.csproj" />
-    <PackageReference Include="Veldrid" Version="4.7.0" />
-    <PackageReference Include="Veldrid.StartupUtilities" Version="4.7.0" />
+    <PackageReference Include="Veldrid" Version="4.8.0" />
+    <PackageReference Include="Veldrid.StartupUtilities" Version="4.8.0" />
+    <ProjectReference Include="..\ImGuizmo.NET\ImGuizmo.NET.csproj" />
+    <ProjectReference Include="..\ImNodes.NET\ImNodes.NET.csproj" />
+    <ProjectReference Include="..\ImPlot.NET\ImPlot.NET.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +27,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="$(RepositoryRootDirectory)/deps/cimgui/win-x64/cimgui.dll" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(RepositoryRootDirectory)/deps/cimplot/win-x64/cimplot.dll" CopyToOutputDirectory="Always" />
+    <Content Include="$(RepositoryRootDirectory)/deps/cimguizmo/win-x64/cimguizmo.dll" CopyToOutputDirectory="Always" />
+    <Content Include="$(RepositoryRootDirectory)/deps/cimnodes/win-x64/cimnodes.dll" CopyToOutputDirectory="Always" />
+    <Content Include="$(RepositoryRootDirectory)/deps/cimgui/win-x64/cimgui.dll" CopyToOutputDirectory="Always" />
     <Content Include="$(RepositoryRootDirectory)/deps/cimgui/osx-x64/cimgui.dylib" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="$(RepositoryRootDirectory)/deps/cimgui/linux-x64/cimgui.so" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
